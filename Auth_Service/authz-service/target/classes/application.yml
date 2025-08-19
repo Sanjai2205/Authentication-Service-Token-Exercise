@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:sqlite:authz.db
+    driver-class-name: org.sqlite.JDBC
+  sql:
+    init:
+      mode: always # run schema.sql + data.sql at startup
+
+# ---- OAuth2 Resource Server (set these for real tokens) ----
+auth:
+  issuer: ${ISSUER:}     # e.g. https://YOUR_DOMAIN/  or Cognito issuer URL
+  audience: ${AUDIENCE:} # expected aud claim
+
+# When issuer is provided, we'll configure NimbusJwtDecoder with issuer JWKS
